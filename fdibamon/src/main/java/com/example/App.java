@@ -14,8 +14,8 @@ public class App {
         printEmptyLine();
 
         Scanner scanner = new Scanner(System.in);
-        Fdibamon fdibamon1 = getChosenFdibamon(fdibamons, scanner);
-        Fdibamon fdibamon2 = getChosenFdibamon(fdibamons, scanner);
+        Fdibamon fdibamon1 = letUserChooseFdibamon(fdibamons, scanner);
+        Fdibamon fdibamon2 = letUserChooseFdibamon(fdibamons, scanner);
         scanner.close();
 
         System.out.println("Ihre gewählten Fdibamons: " + fdibamon1 + ", " + fdibamon2);
@@ -79,7 +79,7 @@ public class App {
         return fdibamon;
     }
 
-    public static Fdibamon getChosenFdibamon(List<Fdibamon> fdibamons, Scanner scanner) {
+    public static Fdibamon letUserChooseFdibamon(List<Fdibamon> fdibamons, Scanner scanner) {
         String name = "";
         Fdibamon fdibamon = null;
         while (fdibamon == null) {
