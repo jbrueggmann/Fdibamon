@@ -35,7 +35,7 @@ public class App {
         }
     }
 
-    private static Fdibamon fight(Fdibamon fdibamon1, Fdibamon fdibamon2) {
+    public static Fdibamon fight(Fdibamon fdibamon1, Fdibamon fdibamon2) {
         boolean areBothFdibamonsStillAlive = true;
         int round = 1;
 

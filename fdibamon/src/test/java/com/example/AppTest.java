@@ -55,4 +55,28 @@ public class AppTest
         Fdibamon fdibamon = App.getFdibamonFromList(fdibamons, "NotAName");
         assertEquals(fdibamon, null);
     }
+
+    @Test
+    public void janShouldBeWinner() {
+        List<Fdibamon> fdibamons = initializeFdibamonsForTesting();
+
+        Fdibamon klaus = fdibamons.get(2);
+        Fdibamon jan = fdibamons.get(0);
+
+        Fdibamon winner = App.fight(klaus, jan);
+
+        assertEquals(winner, jan);
+    }
+
+    @Test
+    public void resultShouldBeDraw() {
+        List<Fdibamon> fdibamons = initializeFdibamonsForTesting();
+
+        Fdibamon rado = fdibamons.get(1);
+        Fdibamon jan = fdibamons.get(0);
+
+        Fdibamon winner = App.fight(rado, jan);
+
+        assertEquals(winner, null);
+    }
 }
