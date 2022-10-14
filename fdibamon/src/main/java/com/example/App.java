@@ -39,10 +39,6 @@ public class App {
             }
         }
 
-        if (fdibamon == null) {
-            System.out.println("Das eingegebene Fdibamon existiert nicht. Bitte versuchen Sie es noch einmal!");
-        }
-
         return fdibamon;
     }
 
@@ -54,6 +50,10 @@ public class App {
             name = scanner.nextLine();
 
             fdibamon = getFdibamonFromList(fdibamons, name);
+
+            if (fdibamon == null) {
+                System.out.println("Das eingegebene Fdibamon existiert nicht. Bitte versuchen Sie es noch einmal!");
+            }
         }
         return fdibamon;
     }
