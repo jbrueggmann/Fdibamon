@@ -13,11 +13,11 @@ public class AppTest
     public static List<Fdibamon> initializeFdibamonsForTesting() {
         List<Fdibamon> fdibamons = new ArrayList<Fdibamon>();
         
-        Fdibamon jan = new Fdibamon("Jan", 50, 60);
-        Fdibamon rado = new Fdibamon("Rado", 20, 30);
-        Fdibamon klaus = new Fdibamon("Klaus", 10, 3);
-        Fdibamon mathias = new Fdibamon("Mathias", 30, 50);
-        Fdibamon nikolay = new Fdibamon("Nikolay", 5, 15);
+        Fdibamon jan = new Fdibamon("Jan", 300, 20);
+        Fdibamon rado = new Fdibamon("Rado", 200, 30);
+        Fdibamon klaus = new Fdibamon("Klaus", 50, 3);
+        Fdibamon mathias = new Fdibamon("Mathias", 400, 50);
+        Fdibamon nikolay = new Fdibamon("Nikolay", 40, 15);
         
         fdibamons.add(jan);
         fdibamons.add(rado);
@@ -54,5 +54,29 @@ public class AppTest
         
         Fdibamon fdibamon = App.getFdibamonFromList(fdibamons, "NotAName");
         assertEquals(fdibamon, null);
+    }
+
+    @Test
+    public void janShouldBeWinner() {
+        List<Fdibamon> fdibamons = initializeFdibamonsForTesting();
+
+        Fdibamon klaus = fdibamons.get(2);
+        Fdibamon jan = fdibamons.get(0);
+
+        Fdibamon winner = App.fight(klaus, jan);
+
+        assertEquals(winner, jan);
+    }
+
+    @Test
+    public void resultShouldBeDraw() {
+        List<Fdibamon> fdibamons = initializeFdibamonsForTesting();
+
+        Fdibamon rado = fdibamons.get(1);
+        Fdibamon jan = fdibamons.get(0);
+
+        Fdibamon winner = App.fight(rado, jan);
+
+        assertEquals(winner, null);
     }
 }

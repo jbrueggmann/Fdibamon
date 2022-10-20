@@ -33,4 +33,19 @@ public class Fdibamon {
   public String toString() {
     return this.name;
   }
+
+  public void attack(Fdibamon enemy) {
+    int remainingHitpointsOfEnemy = calculateRemainingHitpointsOfEnemy(enemy.hitpoints);
+    enemy.setHitpoints(remainingHitpointsOfEnemy);
+  }
+
+  public int calculateRemainingHitpointsOfEnemy(int currentHitpointsOfEnemy) {
+    int remainingHitpointsOfEnemy = currentHitpointsOfEnemy - this.attackPower;
+
+    if (remainingHitpointsOfEnemy < 0) {
+      remainingHitpointsOfEnemy = 0;
+    }
+
+    return remainingHitpointsOfEnemy;
+  }
 }

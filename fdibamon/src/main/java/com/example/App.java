@@ -11,13 +11,61 @@ public class App {
 
         System.out.println("Folgende Fdibamons stehen zur Auswahl: Jan, Rado, Klaus, Mathias, Nikolay");
 
+        printEmptyLine();
+
         Scanner scanner = new Scanner(System.in);
-        Fdibamon fdibamon1 = getChosenFdibamon(fdibamons, scanner);
-        Fdibamon fdibamon2 = getChosenFdibamon(fdibamons, scanner);
+        Fdibamon fdibamon1 = letUserChooseFdibamon(fdibamons, scanner);
+        Fdibamon fdibamon2 = letUserChooseFdibamon(fdibamons, scanner);
         scanner.close();
 
-
         System.out.println("Ihre gewählten Fdibamons: " + fdibamon1 + ", " + fdibamon2);
+
+        printEmptyLine();
+
+        System.out.println("Der Kampf beginnt!");
+
+        Fdibamon winner = fight(fdibamon1, fdibamon2);
+
+        printEmptyLine();
+
+        if (winner != null) {
+            System.out.println("Der Gewinner ist " + winner + "!");
+        } else {
+            System.out.println("Der Kampf ist unentschieden!");
+        }
+    }
+
+    public static Fdibamon fight(Fdibamon fdibamon1, Fdibamon fdibamon2) {
+        boolean areBothFdibamonsStillAlive = true;
+        int round = 1;
+
+        do {
+            printEmptyLine();
+            System.out.println("Runde " + round);
+
+            fdibamon1.attack(fdibamon2);
+            fdibamon2.attack(fdibamon1);
+
+            System.out.println("Hitpoints von Fdibamon " + fdibamon1 + ": " + fdibamon1.hitpoints);
+            System.out.println("Hitpoints von Fdibamon " + fdibamon2 + ": " + fdibamon2.hitpoints);
+
+            areBothFdibamonsStillAlive = fdibamon1.hitpoints > 0 && fdibamon2.hitpoints > 0;
+            round++;
+        } while (areBothFdibamonsStillAlive);
+
+        Fdibamon winner = getWinner(fdibamon1, fdibamon2);
+
+        return winner;
+    }
+
+    private static Fdibamon getWinner(Fdibamon fdibamon1, Fdibamon fdibamon2) {
+        if (fdibamon1.hitpoints > fdibamon2.hitpoints) {
+            return fdibamon1;
+        } else if (fdibamon2.hitpoints > fdibamon1.hitpoints) {
+            return fdibamon2;
+        } else {
+            return null;
+        }
     }
 
     public static Fdibamon getFdibamonFromList(List<Fdibamon> fdibamons, String name) {
@@ -31,7 +79,7 @@ public class App {
         return fdibamon;
     }
 
-    public static Fdibamon getChosenFdibamon(List<Fdibamon> fdibamons, Scanner scanner) {
+    public static Fdibamon letUserChooseFdibamon(List<Fdibamon> fdibamons, Scanner scanner) {
         String name = "";
         Fdibamon fdibamon = null;
         while (fdibamon == null) {
@@ -50,11 +98,11 @@ public class App {
     public static List<Fdibamon> initializeFdibamons() {
         List<Fdibamon> fdibamons = new ArrayList<Fdibamon>();
 
-        Fdibamon jan = new Fdibamon("Jan", 50, 60);
-        Fdibamon rado = new Fdibamon("Rado", 20, 30);
-        Fdibamon klaus = new Fdibamon("Klaus", 10, 3);
-        Fdibamon mathias = new Fdibamon("Mathias", 30, 50);
-        Fdibamon nikolay = new Fdibamon("Nikolay", 5, 15);
+        Fdibamon jan = new Fdibamon("Jan", 300, 20);
+        Fdibamon rado = new Fdibamon("Rado", 200, 30);
+        Fdibamon klaus = new Fdibamon("Klaus", 50, 3);
+        Fdibamon mathias = new Fdibamon("Mathias", 400, 50);
+        Fdibamon nikolay = new Fdibamon("Nikolay", 40, 15);
         
         fdibamons.add(jan);
         fdibamons.add(rado);
@@ -63,5 +111,9 @@ public class App {
         fdibamons.add(nikolay);
 
         return fdibamons;
+    }
+
+    private static void printEmptyLine() {
+        System.out.println("\n");
     }
 }
