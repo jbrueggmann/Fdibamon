@@ -46,8 +46,8 @@ public class App {
             fdibamon1.attack(fdibamon2);
             fdibamon2.attack(fdibamon1);
 
-            System.out.println("Hitpoints of Fdibamon " + fdibamon1 + ": " + fdibamon1.hitpoints);
-            System.out.println("Hitpoints of Fdibamon " + fdibamon2 + ": " + fdibamon2.hitpoints);
+            System.out.println("Hitpoints von Fdibamon " + fdibamon1 + ": " + fdibamon1.hitpoints);
+            System.out.println("Hitpoints von Fdibamon " + fdibamon2 + ": " + fdibamon2.hitpoints);
 
             areBothFdibamonsStillAlive = fdibamon1.hitpoints > 0 && fdibamon2.hitpoints > 0;
             round++;
