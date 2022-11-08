@@ -10,24 +10,6 @@ import org.junit.Test;
 
 public class AppTest 
 {
-    public static List<Fdibamon> initializeFdibamonsForTesting() {
-        List<Fdibamon> fdibamons = new ArrayList<Fdibamon>();
-        
-        Fdibamon jan = new Fdibamon("Jan", 300, 20);
-        Fdibamon rado = new Fdibamon("Rado", 200, 30);
-        Fdibamon klaus = new Fdibamon("Klaus", 50, 3);
-        Fdibamon mathias = new Fdibamon("Mathias", 400, 50);
-        Fdibamon nikolay = new Fdibamon("Nikolay", 40, 15);
-        
-        fdibamons.add(jan);
-        fdibamons.add(rado);
-        fdibamons.add(klaus);
-        fdibamons.add(mathias);
-        fdibamons.add(nikolay);
-
-        return fdibamons;
-    }
-
     @Test
     public void fdibamonsShouldBeEqual() {
         List<Fdibamon> fdibamons = initializeFdibamonsForTesting();
@@ -78,5 +60,23 @@ public class AppTest
         Fdibamon winner = App.fight(rado, jan);
 
         assertEquals(winner, null);
+    }
+
+    public static List<Fdibamon> initializeFdibamonsForTesting() {
+        List<Fdibamon> fdibamons = new ArrayList<Fdibamon>();
+        
+        Fdibamon jan = new Fdibamon("Jan", 300, 20);
+        Fdibamon rado = new Fdibamon("Rado", 200, 30);
+        Fdibamon klaus = new Fdibamon("Klaus", 50, 3);
+        Fdibamon mathias = new Fdibamon("Mathias", 400, 50);
+        Fdibamon nikolay = new Fdibamon("Nikolay", 40, 15);
+        
+        fdibamons.add(jan);
+        fdibamons.add(rado);
+        fdibamons.add(klaus);
+        fdibamons.add(mathias);
+        fdibamons.add(nikolay);
+
+        return fdibamons;
     }
 }
