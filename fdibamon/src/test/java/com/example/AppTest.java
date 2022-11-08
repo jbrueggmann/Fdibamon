@@ -6,14 +6,20 @@ import static org.junit.Assert.assertNotEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class AppTest 
 {
-    @Test
-    public void fdibamonsShouldBeEqual() {
-        List<Fdibamon> fdibamons = initializeFdibamonsForTesting();
+    List<Fdibamon> fdibamons;
 
+    @Before
+    public void setup() {
+        fdibamons = initializeFdibamonsForTesting();
+    }
+
+    @Test
+    public void fdibamonsShouldBeEqualIfNameIsTheSame() {
         Fdibamon rado = fdibamons.get(1);
         
         Fdibamon fdibamon = App.getFdibamonFromList(fdibamons, "Rado");
@@ -21,9 +27,7 @@ public class AppTest
     }
 
     @Test
-    public void fdibamonsShouldNotBeEqual() {
-        List<Fdibamon> fdibamons = initializeFdibamonsForTesting();
-
+    public void fdibamonsShouldNotBeEqualIfNamesAreDifferent() {
         Fdibamon klaus = fdibamons.get(2);
         
         Fdibamon fdibamon = App.getFdibamonFromList(fdibamons, "Rado");
@@ -31,17 +35,13 @@ public class AppTest
     }
 
     @Test
-    public void fdibamonShouldBeNull() {
-        List<Fdibamon> fdibamons = initializeFdibamonsForTesting();
-        
+    public void fdibamonShouldBeNullIfNameIsInvalid() {
         Fdibamon fdibamon = App.getFdibamonFromList(fdibamons, "NotAName");
         assertEquals(fdibamon, null);
     }
 
     @Test
     public void janShouldBeWinner() {
-        List<Fdibamon> fdibamons = initializeFdibamonsForTesting();
-
         Fdibamon klaus = fdibamons.get(2);
         Fdibamon jan = fdibamons.get(0);
 
@@ -52,8 +52,6 @@ public class AppTest
 
     @Test
     public void resultShouldBeDraw() {
-        List<Fdibamon> fdibamons = initializeFdibamonsForTesting();
-
         Fdibamon rado = fdibamons.get(1);
         Fdibamon jan = fdibamons.get(0);
 
