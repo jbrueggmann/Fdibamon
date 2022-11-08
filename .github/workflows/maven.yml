@@ -19,7 +19,7 @@ jobs:
   
     defaults:
       run:
-        working-directory: dart_project
+        working-directory: fdibamon
 
     runs-on: ubuntu-latest
 
